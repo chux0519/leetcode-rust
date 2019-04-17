@@ -1,2 +1,2 @@
-mod Q001_two_sum;
+mod q001_two_sum;
 
