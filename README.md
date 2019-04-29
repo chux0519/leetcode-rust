@@ -10,6 +10,6 @@ Supports rand from crates.io
 
 ## Usage
 
-> cargo run q001
+> cargo test q001
 
-使用 `cargo run q{number}` 执行相应题目的测试用例，src 下对应编号文件中带有代码和注释
+使用 `cargo test q{number}` 执行相应题目的测试用例，src 下对应编号文件中带有代码和注释
