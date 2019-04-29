@@ -1,3 +1,32 @@
+/// using heap start
+use std::cmp::Ordering;
+use std::collections::BinaryHeap;
+
+struct Node(i32, usize);
+
+impl Ord for Node {
+  fn cmp(&self, other: &Node) -> Ordering {
+    // 小顶堆，因此这里进行 reverse 操作
+    self.0.cmp(&other.0).reverse()
+  }
+}
+
+impl PartialOrd for Node {
+  fn partial_cmp(&self, other: &Node) -> Option<Ordering> {
+    Some(self.cmp(other))
+  }
+}
+
+impl PartialEq for Node {
+  fn eq(&self, other: &Node) -> bool {
+      self.0 == other.0
+  }
+}
+
+impl Eq for Node {}
+
+/// using heap end
+
 struct Solution;
 
 // Definition for singly-linked list.
@@ -17,7 +46,8 @@ impl ListNode {
   }
 }
 impl Solution {
-    /// 最容易想到的是两两合并
+    /// 最容易想到的是两两合并 (564ms, 3.4mb)
+    /// 其次是使用小顶堆 (4ms, 4.9mb)
     pub fn merge_k_lists(lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNode>> {
       let mut ret = None::<Box<ListNode>>;
       for entry in lists {
@@ -25,6 +55,25 @@ impl Solution {
       }
       ret
     }
+
+    pub fn merge_using_heap(lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNode>> {
+      let mut heap: BinaryHeap<Node> = BinaryHeap::new();
+      // 基本的思想就是，遍历所有链表的所有节点，全部加入到小顶堆
+      // 然后利用堆特性进行重建链表
+      for (index, entry) in lists.iter().enumerate() {
+        entry.as_ref().and_then(|node| Some(heap.push(Node(node.val, index))));
+      }
+      Solution::next(lists, &mut heap)
+    }
+
+  pub fn next(mut lists: Vec<Option<Box<ListNode>>>, heap: &mut BinaryHeap<Node> ) -> Option<Box<ListNode>> {
+    heap.pop().map(|node| {
+      let next =lists[node.1].take().unwrap().next;
+      next.as_ref().and_then(|n| Some(heap.push(Node(n.val, node.1))));
+      lists[node.1] = next;
+      Box::new(ListNode{val: node.0, next: Solution::next(lists, heap)})
+    })
+  }
 }
 
 fn merge_two_lists(l1: Option<Box<ListNode>>, l2 :Option<Box<ListNode>>) -> Option<Box<ListNode>> {
@@ -79,6 +128,13 @@ mod tests {
         assert_eq!(
         from_vec(vec![1, 1, 2, 3, 4, 4, 5, 6]), 
         Solution::merge_k_lists(vec![
+          from_vec(vec![1, 4, 5]),
+          from_vec(vec![1, 3, 4]),
+          from_vec(vec![2, 6]),
+        ]));
+        assert_eq!(
+        from_vec(vec![1, 1, 2, 3, 4, 4, 5, 6]), 
+        Solution::merge_using_heap(vec![
           from_vec(vec![1, 4, 5]),
           from_vec(vec![1, 3, 4]),
           from_vec(vec![2, 6]),
