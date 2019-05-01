@@ -17,18 +17,14 @@ struct Solution;
 impl Solution {
     pub fn swap_pairs(head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
         match head {
-            None => {
-                return None;
-            }
+            None => None,
             Some(mut inner_h) => match inner_h.next {
-                None => {
-                    return Some(inner_h);
-                }
+                None => Some(inner_h),
                 Some(mut inner_second) => {
                     let third = inner_second.next;
                     inner_h.next = Solution::swap_pairs(third);
                     inner_second.next = Some(inner_h);
-                    return Some(inner_second);
+                    Some(inner_second)
                 }
             },
         }
@@ -41,7 +37,10 @@ mod tests {
     #[test]
     fn q024() {
         assert_eq!(None, Solution::swap_pairs(None));
-        assert_eq!(Some(Box::new(ListNode::new(0))), Solution::swap_pairs(Some(Box::new(ListNode::new(0)))));
+        assert_eq!(
+            Some(Box::new(ListNode::new(0))),
+            Solution::swap_pairs(Some(Box::new(ListNode::new(0))))
+        );
         assert_eq!(
             from_vec(vec![2, 1, 4, 3]),
             Solution::swap_pairs(from_vec(vec![1, 2, 3, 4]))

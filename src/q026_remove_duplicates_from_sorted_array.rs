@@ -24,6 +24,9 @@ mod tests {
     fn q026() {
         assert_eq!(0, Solution::remove_duplicates(&mut vec![]));
         assert_eq!(2, Solution::remove_duplicates(&mut vec![1, 1, 2]));
-        assert_eq!(5, Solution::remove_duplicates(&mut vec![0,0,1,1,1,2,2,3,3,4]));
+        assert_eq!(
+            5,
+            Solution::remove_duplicates(&mut vec![0, 0, 1, 1, 1, 2, 2, 3, 3, 4])
+        );
     }
 }

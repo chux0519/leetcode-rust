@@ -1,18 +1,15 @@
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
-  pub val: i32,
-  pub next: Option<Box<ListNode>>
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
 }
 
 impl ListNode {
-  #[inline]
-  fn new(val: i32) -> Self {
-    ListNode {
-      next: None,
-      val
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode { next: None, val }
     }
-  }
 }
 
 struct Solution;
@@ -23,10 +20,9 @@ impl Solution {
 
     pub fn reverse_k_group(head: Option<Box<ListNode>>, k: i32) -> Option<Box<ListNode>> {
         // 使用 dummy 节点，使得 head 可以 mutable
-        let mut dummy = Box::new(ListNode{val: 0, next: head});
+        let mut dummy = Box::new(ListNode { val: 0, next: head });
         let pre = &mut dummy;
         let mut start = pre.next.take();
-
 
         let mut count = 0;
         let mut cur = &mut start;
@@ -35,7 +31,7 @@ impl Solution {
             match cur {
                 None => {
                     break;
-                },
+                }
                 Some(inner_node) => {
                     cur = &mut inner_node.next;
                 }
@@ -60,8 +56,8 @@ impl Solution {
                         start = next;
                         prev = Some(inner_start);
                         cur = &mut prev;
-                    },
-                    _ => unreachable!()
+                    }
+                    _ => unreachable!(),
                 };
                 count -= 1;
             }

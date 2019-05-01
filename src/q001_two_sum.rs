@@ -31,8 +31,8 @@ impl Solution {
 
         // second pass
         for (i, n) in nums.iter().enumerate() {
-            if h.contains_key(&(target - n)) && *h.get(&(target - n)).unwrap() != i {
-                return vec![i as i32, *h.get(&(target - n)).unwrap() as i32];
+            if h.contains_key(&(target - n)) && h[&(target - n)] != i {
+                return vec![i as i32, h[&(target - n)] as i32];
             }
         }
         vec![]
