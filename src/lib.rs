@@ -4,3 +4,6 @@ mod q024_swap_nodes_in_pairs;
 mod q025_reverse_nodes_in_k_group;
 mod q026_remove_duplicates_from_sorted_array;
 mod q027_remove_element;
+mod q028_implement_strstr;
+mod q029_divide_two_integers;
+mod q1033_moving_stones_until_consecutive;
