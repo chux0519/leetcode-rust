@@ -8,3 +8,4 @@ mod q028_implement_strstr;
 mod q029_divide_two_integers;
 mod q1033_moving_stones_until_consecutive;
 mod q031_next_permutation;
+mod q032_longest_valid_parentheses;
