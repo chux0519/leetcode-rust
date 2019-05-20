@@ -14,3 +14,4 @@ mod q035_search_insert_position;
 mod q1033_moving_stones_until_consecutive;
 mod q1046_last_stone_weight;
 mod q1047_remove_all_adjacent_duplicates_in_string;
+mod q1048_longest_string_chain;
