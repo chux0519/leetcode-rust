@@ -11,6 +11,7 @@ mod q032_longest_valid_parentheses;
 mod q033_search_in_rotated_sorted_array;
 mod q034_find_first_and_last_position_of_element_in_sorted_array;
 mod q035_search_insert_position;
+mod q0416_partition_equal_subset_sum;
 mod q1033_moving_stones_until_consecutive;
 mod q1046_last_stone_weight;
 mod q1047_remove_all_adjacent_duplicates_in_string;
