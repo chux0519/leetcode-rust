@@ -21,3 +21,4 @@ mod q1051_height_checker;
 mod q1052_grumpy_bookstore_owner;
 mod q1053_previous_permutation_with_one_swap;
 mod q1054_distant_barcodes;
+mod q1071_greatest_common_divisor_of_strings;
