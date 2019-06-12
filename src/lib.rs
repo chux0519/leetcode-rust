@@ -22,3 +22,5 @@ mod q1052_grumpy_bookstore_owner;
 mod q1053_previous_permutation_with_one_swap;
 mod q1054_distant_barcodes;
 mod q1071_greatest_common_divisor_of_strings;
+mod q1072_flip_columns_for_maximum_number_of_equal_rows;
+mod q1073_adding_two_negabinary_numbers;
