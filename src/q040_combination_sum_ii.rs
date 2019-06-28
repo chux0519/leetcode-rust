@@ -1,9 +1,11 @@
 struct Solution;
 
 impl Solution {
-    pub fn combination_sum(candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
+    pub fn combination_sum2(candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
         let mut ret = vec![];
         let mut path = vec![];
+        let mut candidates = candidates;
+        candidates.sort();
         Solution::combine_recursive(&candidates, target, 0, &mut ret, &mut path);
         ret
     }
@@ -23,8 +25,11 @@ impl Solution {
             return;
         }
         for i in start..candidates.len() {
+            if i > start && candidates[i] == candidates[i - 1] {
+                continue;
+            }
             path.push(candidates[i]);
-            Solution::combine_recursive(candidates, target - candidates[i], i, ret, path);
+            Solution::combine_recursive(candidates, target - candidates[i], i + 1, ret, path);
             path.pop();
         }
     }
@@ -34,15 +39,10 @@ impl Solution {
 mod tests {
     use super::Solution;
     #[test]
-    fn q039() {
+    fn q040() {
         check(
-            vec![vec![7], vec![2, 2, 3]],
-            Solution::combination_sum(vec![2, 3, 6, 7], 7),
-        );
-
-        check(
-            vec![vec![2, 2, 2, 2], vec![2, 3, 3], vec![3, 5]],
-            Solution::combination_sum(vec![2, 3, 5], 8),
+            vec![vec![1, 7], vec![1, 2, 5], vec![2, 6], vec![1, 1, 6]],
+            Solution::combination_sum2(vec![10, 1, 2, 7, 6, 1, 5], 8),
         );
     }
 
