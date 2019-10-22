@@ -21,11 +21,24 @@ impl TreeNode {
 
 // solution start here
 use std::cell::RefCell;
+use std::collections::VecDeque;
 use std::rc::Rc;
 impl Solution {
     pub fn is_symmetric(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
         // 容易想到的是递归解法，即左子树和右子树递归比较
-        Solution::symmetric(root.clone(), root)
+        // Solution::symmetric(root.clone(), root)
+        // 另一个解法是利用队列，避免递归
+        match root {
+            Some(r) => {
+                return Solution::symmetric_queue(
+                    r.borrow().left.clone(),
+                    r.borrow().right.clone(),
+                );
+            }
+            None => {
+                return true;
+            }
+        }
     }
 
     fn symmetric(
@@ -60,6 +73,55 @@ impl Solution {
                 }
             },
         }
+    }
+    fn symmetric_queue(
+        left: Option<Rc<RefCell<TreeNode>>>,
+        right: Option<Rc<RefCell<TreeNode>>>,
+    ) -> bool {
+        let mut v = VecDeque::new();
+        v.push_back(left);
+        v.push_back(right);
+
+        loop {
+            if v.is_empty() {
+                break;
+            }
+            if let Some(l) = v.pop_front() {
+                if let Some(r) = v.pop_front() {
+                    match l {
+                        Some(_l) => match r {
+                            Some(_r) => {
+                                let borrow_l = _l.borrow();
+                                let borrow_r = _r.borrow();
+                                if borrow_l.val != borrow_r.val {
+                                    return false;
+                                } else {
+                                    // ll, rr and lr rl
+                                    v.push_back(borrow_l.left.clone());
+                                    v.push_back(borrow_r.right.clone());
+                                    v.push_back(borrow_l.right.clone());
+                                    v.push_back(borrow_r.left.clone());
+                                }
+                            }
+                            None => {
+                                return false;
+                            }
+                        },
+                        None => match r {
+                            Some(_r) => {
+                                return false;
+                            }
+                            None => {
+                                continue;
+                            }
+                        },
+                    }
+                } else {
+                    return false;
+                }
+            }
+        }
+        true
     }
 }
 
