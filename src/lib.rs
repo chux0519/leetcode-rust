@@ -28,6 +28,7 @@ mod q053_maximum_subarray;
 mod q058_length_of_last_word;
 mod q067_add_binary;
 mod q101_symmetric_tree;
+mod q102_binary_tree_level_order_traversal;
 mod q1033_moving_stones_until_consecutive;
 mod q1046_last_stone_weight;
 mod q1047_remove_all_adjacent_duplicates_in_string;
