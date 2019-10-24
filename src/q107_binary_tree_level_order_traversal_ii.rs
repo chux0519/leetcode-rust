@@ -56,7 +56,7 @@ impl Solution {
 mod tests {
     use super::*;
     #[test]
-    fn q102() {
+    fn q107() {
         let mut node3 = TreeNode::new(3);
         let node9 = TreeNode::new(9);
         let mut node20 = TreeNode::new(20);
