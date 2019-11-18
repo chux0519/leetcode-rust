@@ -45,4 +45,5 @@ mod q1072_flip_columns_for_maximum_number_of_equal_rows;
 mod q1073_adding_two_negabinary_numbers;
 mod q107_binary_tree_level_order_traversal_ii;
 mod q111_minimum_depth_of_binary_tree;
+mod q126_word_ladder_ii;
 mod q127_word_ladder;
