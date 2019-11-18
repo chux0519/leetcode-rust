@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 mod q001_two_sum;
 mod q023_merge_k_lists;
 mod q024_swap_nodes_in_pairs;
@@ -27,7 +28,10 @@ mod q053_maximum_subarray;
 mod q058_length_of_last_word;
 mod q067_add_binary;
 mod q070_climbing_stairs;
+mod q101_symmetric_tree;
+mod q102_binary_tree_level_order_traversal;
 mod q1033_moving_stones_until_consecutive;
+mod q103_binary_tree_zigzag_level_order_traversal;
 mod q1046_last_stone_weight;
 mod q1047_remove_all_adjacent_duplicates_in_string;
 mod q1048_longest_string_chain;
@@ -39,3 +43,6 @@ mod q1054_distant_barcodes;
 mod q1071_greatest_common_divisor_of_strings;
 mod q1072_flip_columns_for_maximum_number_of_equal_rows;
 mod q1073_adding_two_negabinary_numbers;
+mod q107_binary_tree_level_order_traversal_ii;
+mod q111_minimum_depth_of_binary_tree;
+mod q127_word_ladder;
