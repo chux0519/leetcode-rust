@@ -1,6 +1,6 @@
-use std::collections::VecDeque;
-
 struct Solution;
+
+use std::collections::VecDeque;
 impl Solution {
     pub fn solve(board: &mut Vec<Vec<char>>) {
         // 寻找 O 是否存在到 border 的路径
@@ -53,15 +53,14 @@ impl Solution {
     }
 
     pub fn bfs_x_y(board: &mut Vec<Vec<char>>, i: usize, j: usize) {
-        println!("{}, {}: O", i, j);
-        let mut q: VecDeque<(usize, usize)> = VecDeque::new();
-        let m = board.len();
-        let n = board[0].len();
-        q.push_back((i, j));
+        let mut q: VecDeque<(i32, i32)> = VecDeque::new();
+        let m = board.len() as i32;
+        let n = board[0].len() as i32;
+        q.push_back((i as i32, j as i32));
         while !q.is_empty() {
             let (_i, _j) = q.pop_front().unwrap();
-            if _i > 0 && _i < m && _j > 0 && _j < n && board[_i][_j] == 'O' {
-                board[_i][_j] = 'B';
+            if _i >= 0 && _i < m && _j >= 0 && _j < n && board[_i as usize][_j as usize] == 'O' {
+                board[_i as usize][_j as usize] = 'B';
                 q.push_back((_i - 1, _j));
                 q.push_back((_i + 1, _j));
                 q.push_back((_i, _j - 1));
@@ -74,6 +73,7 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::Solution;
+
     #[test]
     fn q130() {
         {
@@ -94,7 +94,44 @@ mod tests {
         }
         {
             let mut input = vec![vec!['O']];
-            let output = vec![vec!['X']];
+            let output = vec![vec!['O']];
+            Solution::solve(&mut input);
+            assert_eq!(input, output);
+        }
+        {
+            let mut input = [
+                ['X', 'O', 'O', 'X', 'X', 'X', 'O', 'X', 'O', 'O'],
+                ['X', 'O', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+                ['X', 'X', 'X', 'X', 'O', 'X', 'X', 'X', 'X', 'X'],
+                ['X', 'O', 'X', 'X', 'X', 'O', 'X', 'X', 'X', 'O'],
+                ['O', 'X', 'X', 'X', 'O', 'X', 'O', 'X', 'O', 'X'],
+                ['X', 'X', 'O', 'X', 'X', 'O', 'O', 'X', 'X', 'X'],
+                ['O', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'O'],
+                ['O', 'X', 'X', 'X', 'X', 'X', 'O', 'X', 'X', 'X'],
+                ['X', 'O', 'O', 'X', 'X', 'O', 'X', 'X', 'O', 'O'],
+                ['X', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'O'],
+            ]
+            .iter()
+            .cloned()
+            .map(|sub| sub.iter().cloned().collect())
+            .collect();
+            let output: Vec<Vec<char>> = [
+                ['X', 'O', 'O', 'X', 'X', 'X', 'O', 'X', 'O', 'O'],
+                ['X', 'O', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+                ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+                ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'O'],
+                ['O', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+                ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+                ['O', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'O'],
+                ['O', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'],
+                ['X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'O', 'O'],
+                ['X', 'X', 'X', 'O', 'O', 'X', 'O', 'X', 'X', 'O'],
+            ]
+            .iter()
+            .cloned()
+            .map(|sub| sub.iter().cloned().collect())
+            .collect();
+
             Solution::solve(&mut input);
             assert_eq!(input, output);
         }
