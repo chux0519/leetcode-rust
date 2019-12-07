@@ -26,6 +26,7 @@ mod q047_permutations_ii;
 mod q048_rotate_image;
 mod q053_maximum_subarray;
 mod q058_length_of_last_word;
+mod q066_plus_one;
 mod q067_add_binary;
 mod q070_climbing_stairs;
 mod q101_symmetric_tree;
