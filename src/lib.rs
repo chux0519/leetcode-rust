@@ -30,6 +30,7 @@ mod q066_plus_one;
 mod q067_add_binary;
 mod q070_climbing_stairs;
 mod q088_merge_sorted_array;
+mod q100_same_tree;
 mod q101_symmetric_tree;
 mod q102_binary_tree_level_order_traversal;
 mod q1033_moving_stones_until_consecutive;
