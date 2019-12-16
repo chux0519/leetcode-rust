@@ -52,6 +52,7 @@ mod q110_balanced_binary_tree;
 mod q111_minimum_depth_of_binary_tree;
 mod q118_pascals_triangle;
 mod q119_pascals_triangle_ii;
+mod q121_best_time_to_buy_and_sell_stock;
 mod q126_word_ladder_ii;
 mod q127_word_ladder;
 mod q130_surrounded_regions;
