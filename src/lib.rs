@@ -54,6 +54,7 @@ mod q118_pascals_triangle;
 mod q119_pascals_triangle_ii;
 mod q121_best_time_to_buy_and_sell_stock;
 mod q122_best_time_to_buy_and_sell_stock_ii;
+mod q125_valid_palindrome;
 mod q126_word_ladder_ii;
 mod q127_word_ladder;
 mod q130_surrounded_regions;
