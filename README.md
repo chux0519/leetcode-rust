@@ -11,3 +11,5 @@ Supports rand from crates.io
 > cargo test q001
 
 use `cargo test q{number}` to run test cases
+
+use `cargo doc` to generate documentations
