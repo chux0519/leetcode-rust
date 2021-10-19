@@ -1,10 +1,23 @@
+/// 暴力解法可以直接通过
+///
+/// 官方还提供了两种思路，即使用一个 hashmap 进行缓存
+/// - 进行两趟遍历，第一次用于初始化，第二次用于查找
+/// - 在两趟遍历的基础上，可以优化成一趟遍历，这里也给出解法
+///
+/// ```rust
+/// assert_eq!(vec![0, 1], Solution::two_sum(vec![2, 7, 11, 15], 9));
+/// assert_eq!(
+///     vec![0, 1],
+///     Solution::two_pass_hashmap(vec![2, 7, 11, 15], 9)
+/// );
+/// assert_eq!(
+///     vec![0, 1],
+///     Solution::one_pass_hashmap(vec![2, 7, 11, 15], 9)
+/// );
+/// ```
 struct Solution;
 
 impl Solution {
-    /// 这里先采用暴力解法，发现可以直接通过，简单粗暴
-    /// 官方还提供了两种思路，即使用一个 hashmap 进行缓存
-    /// 进行两趟遍历，第一次用于初始化，第二次用于查找
-    /// 在两趟遍历的基础上，可以优化成一趟遍历，这里也给出解法
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut res = Vec::new();
         let len = nums.len();
@@ -37,6 +50,7 @@ impl Solution {
         }
         vec![]
     }
+
     pub fn one_pass_hashmap(nums: Vec<i32>, target: i32) -> Vec<i32> {
         use std::collections::HashMap;
 
